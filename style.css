@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align: center;
+    height: 95%;
+   }
+
+header {
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    position: relative;
+    height: 10vh;
+
+}
+
+.parent {
+    background: gray;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid green;
+}
+
+.card-button {
+    margin-top: 5vh;
+}
+
+.card {
+    background-color: black;
+    width: 200px;
+    height: 300px;
+    margin-left: 0%;
+    position: relative;
+    border: 1px solid red;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#inner {
+    color: white;
+    position: relative;
+
+}
+
+.Buttons {
+
+    position: relative;
+    border: 1px solid rgb(207, 178, 178);
+    margin-top: 10px;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Buttons h4 {
+    font-weight: 400;
+}
+
+#start-button {
+    display: relative;
+    height: 3vh;
+    width: 6vw;
+}
+
+#reveal-button {
+    display: none;
+    height: 3vh;
+}
+
+#hide-button {
+    display: none;
+}
