@@ -44,21 +44,65 @@ header {
 
 .card {
     background-color: black;
-    width: 200px;
-    height: 300px;
-    margin-left: 0%;
+    width: 250px;
+    height: 350px;
     position: relative;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: bottom;
     align-items: center;
+    flex-direction: column;
+}
 
+.players {
+    display: flex;
+    color: white;
+    margin-top: 100px;
+}
+
+#welcome {
+    color: white;
+}
+
+#welcome .click-start {
+    margin-top: 40px;
+}
+
+#hello {
+    color: white;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 #inner {
     color: white;
     position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: none;
 
+}
+
+#number-of-players {
+    width: 38px;
+    margin-left: 10px;
+}
+
+.spies {
+    display: flex;
+    color: white;
+    margin-top: 100px;
+    
+}
+
+.spies h4 {
+    margin-right: 25px;
+}
+
+#number-of-spies {
+    width: 38px;
+    margin-left: 0px;
 }
 
 .Buttons {
@@ -83,14 +127,49 @@ header {
     width: 75px;
 }
 
+#create-button {
+    display: none;
+    height: 30px;
+    width: 75px;
+
+}
+
 #reveal-button {
     display: none;
     height: 30px;
     width: 125px;
+    margin-top: 50px;
 }
 
 #hide-button {
     display: none;
     height: 30px;
     width: 125px;
+    margin-top: 50px;
+}
+
+#end-game {
+    display: none;
+    height: 30px;
+    width: 125px;
+    margin-top: 25px;
+}
+
+#end-game h4 {
+    font-weight: 400;
+    font-size: large;
+}
+
+.welcome {
+    display: block;
+}
+
+#game-option {
+    display: none;
+}
+
+#end-screen {
+    color: white;
+    display: none;
+    margin-top: 25px;
 }
