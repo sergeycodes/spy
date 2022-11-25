@@ -1,8 +1,8 @@
-let playerCount = 5;
+let playerCount = 3;
 let getLocation;
 let spy;
 let currPlayer;
-const place = ["Airport","Bank","Beach","Circus","Church","Casino"];
+const place = ["Airport","Bank","Beach","Circus","Church","Casino","Grocery Store"];
 
 let innerTxt = document.querySelector("#inner");
 let startBtn = document.querySelector("#start-button");
