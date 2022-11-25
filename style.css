@@ -24,6 +24,7 @@ header {
     color: black;
     position: relative;
     height: 10vh;
+    background: gray;
 
 }
 
@@ -35,7 +36,6 @@ header {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    border: 1px solid green;
 }
 
 .card-button {
@@ -48,7 +48,6 @@ header {
     height: 300px;
     margin-left: 0%;
     position: relative;
-    border: 1px solid red;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -65,7 +64,6 @@ header {
 .Buttons {
 
     position: relative;
-    border: 1px solid rgb(207, 178, 178);
     margin-top: 10px;
     height: 4vh;
     display: flex;
@@ -76,19 +74,23 @@ header {
 
 .Buttons h4 {
     font-weight: 400;
+    font-size: large;
 }
 
 #start-button {
     display: relative;
-    height: 3vh;
-    width: 6vw;
+    height: 30px;
+    width: 75px;
 }
 
 #reveal-button {
     display: none;
-    height: 3vh;
+    height: 30px;
+    width: 125px;
 }
 
 #hide-button {
     display: none;
+    height: 30px;
+    width: 125px;
 }
