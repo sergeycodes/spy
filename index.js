@@ -2,7 +2,7 @@ let playerCount;
 let getLocation;
 let spy;
 let currPlayer;
-const place = ["Airport","Bank","Beach","Circus","Church","Casino","Grocery Store"];
+const place = ["Airport","Bank","Beach","Circus","Church","Casino","Grocery Store","Office","Salon","Hospital","Hotel","Train","Pirate Ship","Restaurant","Night Club","School","Gym","Gas Station","Space Station","Submarine","Zoo","Aquarium","Museum","Library","Prison","Wediing"];
 
 
 let welcome = document.querySelector("#welcome");
