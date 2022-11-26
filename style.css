@@ -75,6 +75,26 @@ header {
     margin-bottom: 40px;
 }
 
+.catagories {
+    color: white;
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+}
+
+.catagories ul {
+    position: relative;
+    list-style: none;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.catagories ul li {
+    margin-bottom: 5px;
+}
+
 #inner {
     color: white;
     position: relative;
@@ -92,7 +112,7 @@ header {
 .spies {
     display: flex;
     color: white;
-    margin-top: 100px;
+    margin-top: 40px;
     
 }
 
