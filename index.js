@@ -58,33 +58,26 @@ function jobSelected() {
 }
 
 function renderGame() {
-    console.log(catPlace.checked);
     currPlayer = 1;
     let userCount = document.querySelector("#number-of-players");
     let spyCount = document.querySelector("#number-of-spies");
     if(catPlace.checked && catJob.checked) {
         //add both arrays to a bigger array
-        console.log("BOTH OPTIONS CHECKED");
         for (let index = 0; index < place.length; index++) {
             arrayOfObjects[index] = place[index];
-            console.log(arrayOfObjects[index]);
         }
-        for (let index = arrayOfObjects.length; index < (job.length + arrayOfObjects.length; index++) {
-            arrayOfObjects[index] = job[index];
-            console.log(arrayOfObjects[index]);
+        let arrayLength = arrayOfObjects.length;
+        for(let index = 0; index < job.length; index++) {
+            arrayOfObjects[index + arrayLength] = job[index];
         }
     }else if(catPlace.checked){
-        console.log("Location Checked");
         
         for (let index = 0; index < place.length; index++) {
             arrayOfObjects[index] = place[index];
-            console.log(arrayOfObjects[index]);
         }
     }else if(catJob.checked){
-        console.log("Occupation Checked");
         for (let index = 0; index < job.length; index++) {
             arrayOfObjects[index] = job[index];
-            console.log(arrayOfObjects[index]);
         }
     }
 
@@ -123,6 +116,7 @@ function hideStartButton() {
 }
 
 function revealCurrPlayer() {
+    innerTxt.style.color = "white";
     innerTxt.textContent = "Reveal Player " + currPlayer + " Card";
 }
 
@@ -150,10 +144,12 @@ function showHideButton() {
 
 
 function showSpy() {
+    innerTxt.style.color = "#CF0A0A";
     innerTxt.textContent = "SPY";
 }
 
 function showLocation() {
+    innerTxt.style.color = "white";
     innerTxt.textContent = arrayOfObjects[getLocation];
 }
 
@@ -198,6 +194,7 @@ function getRandom(min, max) {
     playerCount = null;
     hideEndGameButton();
     hideRevealButton();
+    hideHideButton();
     hideEndScreen();
     startGame();
   }
