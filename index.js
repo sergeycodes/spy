@@ -180,7 +180,10 @@ function getRandom(min, max) {
   }
 
   function revealEndScreen() {
-        endScreen.style.display = "block";
+    endScreen.style.display = "block";
+
+    //setTimeout(countdown(), 1000);
+    countdown();
   }
 
   function hideEndScreen() {
@@ -196,7 +199,11 @@ function getRandom(min, max) {
     hideRevealButton();
     hideHideButton();
     hideEndScreen();
+    endCountdown();
     startGame();
+
+    document.getElementById("cdro").innerHTML = "";
+    document.getElementById("timer").style.strokeDashoffset = 0;
   }
 
   function revealEndGameButton() {
@@ -206,3 +213,58 @@ function getRandom(min, max) {
   function hideEndGameButton() {
     endBtn.style.display = "none";
   }
+
+  
+  var x;
+  var timer = document.getElementById("timer");
+  var circumfrence = 578;
+
+  function countdown() {
+    var countdownDate = new Date().getTime() + 301000;
+    x = setInterval(function(){
+        // Get the current date and time
+    
+    var now = new Date().getTime();
+    
+
+    // Calculate the remaining time
+    var distance = countdownDate - now;
+    // Calculate the minutes and seconds remaining
+    var minutes = Math.floor(distance / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    seconds = seconds.toString().padStart(2, "0");
+
+    // Display the countdown in the element with id="countdown"
+    document.getElementById("cdtext").innerHTML = minutes + ":" + seconds;
+    
+    var timeFraction = distance / 301000;
+    var circleDashOffset = circumfrence - circumfrence * timeFraction;
+    timer.style.strokeDashoffset = circleDashOffset;
+    var cd = document.getElementById("cdtext");
+
+    if(timeFraction <= 0.25) {
+        timer.style.stroke = "red";
+        cd.style.color = "red";
+    } else if (timeFraction <= 0.5) {
+      timer.style.stroke = "yellow";
+      cd.style.color = "yellow";
+    } else {
+      timer.style.stroke = "green";
+      cd.style.color = "green";
+    }
+
+    // If the countdown is finished, display "Expired"
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("cdtext").innerHTML = "";
+      document.getElementById("cdro").innerHTML = "GAME OVER";
+    }
+  }, 1000);
+  }
+
+  function endCountdown() {
+    clearInterval(x);
+    document.getElementById("cdtext").innerHTML = "5:00";
+  }
+

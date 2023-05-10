@@ -38,14 +38,20 @@ header {
     flex-direction: row;
 }
 
+#logo {
+    position: relative;
+    z-index: 1;
+    align-items: left;
+}
+
 .card-button {
     margin-top: 5vh;
 }
 
 .card {
     background-color: black;
-    width: 250px;
-    height: 350px;
+    width: 300px;
+    height: 400px;
     position: relative;
     border-radius: 10px;
     display: flex;
@@ -189,7 +195,48 @@ header {
 }
 
 #end-screen {
+    position: absolute;
     color: white;
     display: none;
-    margin-top: 25px;
+}
+
+
+
+#countdown {
+    position: absolute;
+}
+
+#countdown-svg {
+    position: absolute;
+    margin-top: 96px;
+    margin-left: -100px;
+}
+
+#timer {
+    stroke-dasharray: 578;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s linear, stroke 0.5s linear;
+  }
+
+#cdtext{
+    position: absolute;
+    color: green;
+    transition: color 0.5s linear;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 170px;
+    margin-left: -48px;
+}
+
+#countdown-ro {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: -74px;
+}
+
+#cdro {
+    font-size: 48px;
+    font-weight: bold;
 }

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spy</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
@@ -83,7 +84,11 @@
         </div>
         <div class="player-card"><h3 id="inner"></h3></div>
         <div id="end-screen">
-            <div><h2>5 Minute Timer</h2></div>
+            <svg id="countdown-svg" width="200" height="200">
+                <circle id="timer" cx="100" cy="100" r="92" fill="none" stroke="green" stroke-width="8"></circle>
+              </svg>
+            <div id="countdown"><h2 id="cdtext">5:00</h2></div>
+            <div id="countdown-ro"><h2 id="cdro"></h2></div>
         </div>
         
     </div>
