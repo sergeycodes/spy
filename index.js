@@ -14,16 +14,17 @@ let innerTxt = document.querySelector("#inner");
 let endScreen = document.querySelector("#end-screen");
 
 let startBtn = document.querySelector("#start-button");
-let createBtn = document.querySelector("#create-button")
+let createBtn = document.querySelector("#create-button");
 let revealBtn = document.querySelector("#reveal-button");
 let hideBtn = document.querySelector("#hide-button");
 let endBtn = document.querySelector("#end-game");
+
+let spyPositions = [];
 
 function preview() {
     innerTxt.textContent = "Start Game";
     hideHideButton();
     revealStartButton();
-
 }
 
 function startGame() {
@@ -45,16 +46,16 @@ function hideWelcome() {
     welcome.style.display = "none";
 }
 
-function revealGameOption(){
+function revealGameOption() {
     gameOption.style.display = "block";
 }
 
 function locationSelected() {
-
+    // Function body for locationSelected
 }
 
 function jobSelected() {
-
+    // Function body for jobSelected
 }
 
 function renderGame() {
@@ -65,7 +66,7 @@ function renderGame() {
     playerCount = userCount.value;
 
     // Generate unique spy positions
-    let spyPositions = [];
+    spyPositions = [];
     while (spyPositions.length < numSpies) {
         let position = getRandom(1, playerCount);
         if (!spyPositions.includes(position)) {
@@ -86,17 +87,19 @@ function renderGame() {
         arrayOfObjects.push(...job);
     }
 
+    // Set a random location or job for getLocation
+    getLocation = getRandom(0, arrayOfObjects.length);
+
     hideCreateButton();
     revealRevealButton();
     hideGameOption();
     revealPlayerCard();
     revealCurrPlayer();
-    
     revealEndGameButton();
 }
 
 function revealPlayerCard() {
-    innerTxt.style.display = "block"
+    innerTxt.style.display = "block";
 }
 
 function hideCreateButton() {
@@ -109,10 +112,6 @@ function hideGameOption() {
 
 function revealStartButton() {
     startBtn.style.display = "block";
-}
-
-function hideStartButton() {
-    startBtn.style.display = "none"
 }
 
 function revealCurrPlayer() {
@@ -142,7 +141,6 @@ function showHideButton() {
     hideBtn.style.display = "block";
 }
 
-
 function showSpy() {
     innerTxt.style.color = "#CF0A0A";
     innerTxt.textContent = "SPY";
@@ -158,6 +156,9 @@ function hideCard() {
     if (currPlayer > playerCount) {
         startCountDown();
     } else {
+        // Set a new random location or job for getLocation
+        getLocation = getRandom(0, arrayOfObjects.length);
+
         revealCurrPlayer();
         hideHideButton();
         revealRevealButton();
@@ -165,31 +166,29 @@ function hideCard() {
 }
 
 function hideHideButton() {
-    hideBtn.style.display = "none"
+    hideBtn.style.display = "none";
 }
 
 function getRandom(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-  }
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
-  function startCountDown() {
-    innerTxt.style.display = "none"
+function startCountDown() {
+    innerTxt.style.display = "none";
     hideHideButton();
     revealEndScreen();
-  }
+}
 
-  function revealEndScreen() {
+function revealEndScreen() {
     endScreen.style.display = "block";
-
-    //setTimeout(countdown(), 1000);
     countdown();
-  }
+}
 
-  function hideEndScreen() {
-    endScreen.style.display = "none"
-  }
+function hideEndScreen() {
+    endScreen.style.display = "none";
+}
 
-  function endGame() {
+function endGame() {
     spy = null;
     getLocation = null;
     currPlayer = null;
@@ -203,67 +202,63 @@ function getRandom(min, max) {
 
     document.getElementById("cdro").innerHTML = "";
     document.getElementById("timer").style.strokeDashoffset = 0;
-  }
+}
 
-  function revealEndGameButton() {
+function revealEndGameButton() {
     endBtn.style.display = "block";
-  }
+}
 
-  function hideEndGameButton() {
+function hideEndGameButton() {
     endBtn.style.display = "none";
-  }
+}
 
-  
-  var x;
-  var timer = document.getElementById("timer");
-  var circumfrence = 578;
+var x;
+var timer = document.getElementById("timer");
+var circumfrence = 578;
 
-  function countdown() {
+function countdown() {
     var countdownDate = new Date().getTime() + 301000;
-    x = setInterval(function(){
+    x = setInterval(function() {
         // Get the current date and time
-    
-    var now = new Date().getTime();
-    
+        var now = new Date().getTime();
 
-    // Calculate the remaining time
-    var distance = countdownDate - now;
-    // Calculate the minutes and seconds remaining
-    var minutes = Math.floor(distance / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Calculate the remaining time
+        var distance = countdownDate - now;
+        // Calculate the minutes and seconds remaining
+        var minutes = Math.floor(distance / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    seconds = seconds.toString().padStart(2, "0");
+        seconds = seconds.toString().padStart(2, "0");
 
-    // Display the countdown in the element with id="countdown"
-    document.getElementById("cdtext").innerHTML = minutes + ":" + seconds;
-    
-    var timeFraction = distance / 301000;
-    var circleDashOffset = circumfrence - circumfrence * timeFraction;
-    timer.style.strokeDashoffset = circleDashOffset;
-    var cd = document.getElementById("cdtext");
+        // Display the countdown in the element with id="countdown"
+        document.getElementById("cdtext").innerHTML = minutes + ":" + seconds;
 
-    if(timeFraction <= 0.25) {
-        timer.style.stroke = "red";
-        cd.style.color = "red";
-    } else if (timeFraction <= 0.5) {
-      timer.style.stroke = "yellow";
-      cd.style.color = "yellow";
-    } else {
-      timer.style.stroke = "green";
-      cd.style.color = "green";
-    }
+        var timeFraction = distance / 301000;
+        var circleDashOffset = circumfrence - circumfrence * timeFraction;
+        timer.style.strokeDashoffset = circleDashOffset;
+        var cd = document.getElementById("cdtext");
 
-    // If the countdown is finished, display "Expired"
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("cdtext").innerHTML = "";
-      document.getElementById("cdro").innerHTML = "GAME OVER";
-    }
-  }, 1000);
-  }
+        if (timeFraction <= 0.25) {
+            timer.style.stroke = "red";
+            cd.style.color = "red";
+        } else if (timeFraction <= 0.5) {
+            timer.style.stroke = "yellow";
+            cd.style.color = "yellow";
+        } else {
+            timer.style.stroke = "green";
+            cd.style.color = "green";
+        }
 
-  function endCountdown() {
+        // If the countdown is finished, display "Expired"
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("cdtext").innerHTML = "";
+            document.getElementById("cdro").innerHTML = "GAME OVER";
+        }
+    }, 1000);
+}
+
+function endCountdown() {
     clearInterval(x);
     document.getElementById("cdtext").innerHTML = "5:00";
-  }
-
+}
