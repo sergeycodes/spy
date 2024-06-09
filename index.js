@@ -61,30 +61,30 @@ function renderGame() {
     currPlayer = 1;
     let userCount = document.querySelector("#number-of-players");
     let spyCount = document.querySelector("#number-of-spies");
-    if(catPlace.checked && catJob.checked) {
-        //add both arrays to a bigger array
-        for (let index = 0; index < place.length; index++) {
-            arrayOfObjects[index] = place[index];
-        }
-        let arrayLength = arrayOfObjects.length;
-        for(let index = 0; index < job.length; index++) {
-            arrayOfObjects[index + arrayLength] = job[index];
-        }
-    }else if(catPlace.checked){
-        
-        for (let index = 0; index < place.length; index++) {
-            arrayOfObjects[index] = place[index];
-        }
-    }else if(catJob.checked){
-        for (let index = 0; index < job.length; index++) {
-            arrayOfObjects[index] = job[index];
+    let numSpies = spyCount.value;
+    playerCount = userCount.value;
+
+    // Generate unique spy positions
+    let spyPositions = [];
+    while (spyPositions.length < numSpies) {
+        let position = getRandom(1, playerCount);
+        if (!spyPositions.includes(position)) {
+            spyPositions.push(position);
         }
     }
 
-    spy = spyCount.value;
-    playerCount = userCount.value;
-    spy = getRandom(1, playerCount);
-    getLocation = getRandom(0, arrayOfObjects.length);
+    // Reset arrayOfObjects
+    arrayOfObjects.length = 0;
+
+    // Add selected categories to arrayOfObjects
+    if (catPlace.checked && catJob.checked) {
+        arrayOfObjects.push(...place);
+        arrayOfObjects.push(...job);
+    } else if (catPlace.checked) {
+        arrayOfObjects.push(...place);
+    } else if (catJob.checked) {
+        arrayOfObjects.push(...job);
+    }
 
     hideCreateButton();
     revealRevealButton();
@@ -125,10 +125,10 @@ function revealRevealButton() {
 }
 
 function revealCard() {
-    if(currPlayer != spy){
-        showLocation();
-    }else{
+    if (spyPositions.includes(currPlayer)) {
         showSpy();
+    } else {
+        showLocation();
     }
     hideRevealButton();
     showHideButton();
@@ -155,13 +155,12 @@ function showLocation() {
 
 function hideCard() {
     currPlayer++;
-    if(currPlayer > playerCount){
+    if (currPlayer > playerCount) {
         startCountDown();
-    }else{
+    } else {
         revealCurrPlayer();
         hideHideButton();
         revealRevealButton();
-
     }
 }
 
