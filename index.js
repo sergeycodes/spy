@@ -178,8 +178,6 @@ function hideCard() {
             startCountDown();
         } else {
             // Set a new random location or job for getLocation
-            getLocation = getRandom(0, arrayOfObjects.length);
-
             revealCurrPlayer();
             hideHideButton();
             revealRevealButton();
