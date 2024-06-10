@@ -11,6 +11,7 @@ const catJob = document.querySelector("#occupation-el");
 let welcome = document.querySelector("#welcome");
 let gameOption = document.querySelector("#game-option");
 let innerTxt = document.querySelector("#inner");
+let card = document.querySelector("#card");
 let endScreen = document.querySelector("#end-screen");
 
 let startBtn = document.querySelector("#start-button");
@@ -124,13 +125,25 @@ function revealRevealButton() {
 }
 
 function revealCard() {
-    if (spyPositions.includes(currPlayer)) {
-        showSpy();
-    } else {
-        showLocation();
-    }
-    hideRevealButton();
-    showHideButton();
+    card.style.transition = "transform 0.5s";
+    card.style.transform = "rotateY(180deg)";
+
+    card.classList.add("is-flipped");
+
+    // add a 0.25s delay
+    innerTxt.textContent = "";
+    setTimeout(function() {
+        
+        if (spyPositions.includes(currPlayer)) {
+            showSpy();
+        } else {
+            showLocation();
+        }
+
+        hideRevealButton();
+        showHideButton();
+
+    }, 250);  
 }
 
 function hideRevealButton() {
@@ -152,17 +165,26 @@ function showLocation() {
 }
 
 function hideCard() {
+    card.style.transition = "transform 0.5s";
+    card.style.transform = "rotateY(0deg)";
+    card.classList.remove("is-flipped");
     currPlayer++;
-    if (currPlayer > playerCount) {
-        startCountDown();
-    } else {
-        // Set a new random location or job for getLocation
-        getLocation = getRandom(0, arrayOfObjects.length);
 
-        revealCurrPlayer();
-        hideHideButton();
-        revealRevealButton();
-    }
+    innerTxt.textContent = "";
+
+    // add a 0.25s delay
+    setTimeout(function() {
+        if (currPlayer > playerCount) {
+            startCountDown();
+        } else {
+            // Set a new random location or job for getLocation
+            getLocation = getRandom(0, arrayOfObjects.length);
+
+            revealCurrPlayer();
+            hideHideButton();
+            revealRevealButton();
+        }
+    }, 250);
 }
 
 function hideHideButton() {
